@@ -1,30 +1,22 @@
-import React, { Component } from 'react';
-import { Grid } from 'semantic-ui-react';
+import React, { Component } from 'react'
 import MetricCalculator from './Components/metricCalculator'
+import { Tab, Grid } from 'semantic-ui-react'
 
 
-class App extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      weight: '',
-      height: ''
-    }
-  }
+const panes = [
+  { menuItem: 'Metric', render: () => <Tab.Pane attached={false}><MetricCalculator/></Tab.Pane> },
+  { menuItem: 'Imperial', render: () => <Tab.Pane attached={false}>Imperial Calculator placeholder</Tab.Pane> },
+]
 
-  render() {
-    return (
-      <Grid centered columns={2}>
-        <Grid.Column>
-          <h1>BMI Calculator</h1>
-          
-            <MetricCalculator />
-          
-        </Grid.Column>
-      </Grid>
-      
-    );
-  }  
-}
+const App = () => (
+  <Grid centered columns={2}>
+    <Grid.Column>
 
-export default App;
+      <h1>BMI Calculator</h1>
+      <Tab menu={{ secondary: true, pointing: true }} panes={panes} />
+
+    </Grid.Column>
+  </Grid>
+)
+
+export default App

@@ -33,6 +33,7 @@ class MetricCalculator extends Component {
                 value={this.state.height} 
                 onChange={ (e) => this.setState({ height: e.target.value}) }
               />
+              
             </Form.Group>
 
             <DisplayResult 
