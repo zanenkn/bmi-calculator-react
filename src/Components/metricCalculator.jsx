@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-import DisplayResult from './Components/displayResult';
-import { Form, Grid } from 'semantic-ui-react'
+import DisplayResult from './displayResult';
+import { Form } from 'semantic-ui-react'
 
 
-class App extends Component {
+class MetricCalculator extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -14,9 +14,6 @@ class App extends Component {
 
   render() {
     return (
-      <Grid centered columns={2}>
-        <Grid.Column>
-          <h1>BMI Calculator</h1>
           <Form>
             <Form.Group widths='equal'>
               <Form.Input
@@ -44,11 +41,8 @@ class App extends Component {
             />
 
           </Form>
-        </Grid.Column>
-      </Grid>
-      
     );
   }  
 }
 
-export default App;
+export default MetricCalculator
