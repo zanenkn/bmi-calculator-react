@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import DisplayResult from './Components/displayResult';
-import { Form, Grid, Card } from 'semantic-ui-react'
+import { Form, Grid } from 'semantic-ui-react'
 
 
 class App extends Component {
@@ -16,6 +16,7 @@ class App extends Component {
     return (
       <Grid centered columns={2}>
         <Grid.Column>
+          <h1>BMI Calculator</h1>
           <Form>
             <Form.Group widths='equal'>
               <Form.Input
