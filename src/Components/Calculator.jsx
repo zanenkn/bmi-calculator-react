@@ -12,11 +12,11 @@ class Calculator extends Component {
       method: 'metric'
     }
   }
-
+  
 
   componentDidUpdate(prevProps) {
     if (prevProps.method !== this.props.method) {
-      this.setState({method: this.props.method})
+      this.setState({method: this.props.method, weight: '', height: ''})
     }
   }
 
@@ -24,7 +24,7 @@ class Calculator extends Component {
   render() {
     return (
           <Form>
-            <Form.Group widths='equal'>
+            <Form.Group id='form' widths='equal'>
               <Form.Input
                 fluid
                 label='Weight'
