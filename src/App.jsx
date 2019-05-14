@@ -29,7 +29,7 @@ class App extends Component {
               <Form.Input
                 fluid
                 label='Weight'
-                placeholder='kg' 
+                placeholder={this.state.method === 'metric' ? 'kilos' : 'lbs'}
                 name='weight'
                 value={this.state.weight} 
                 onChange={ (e) => this.setState({ weight: e.target.value}) }
@@ -38,7 +38,7 @@ class App extends Component {
               <Form.Input
                 fluid
                 label='Height'
-                placeholder='cm'
+                placeholder={this.state.method === 'metric' ? 'cm' : 'inches'}
                 name='height' 
                 value={this.state.height} 
                 onChange={ (e) => this.setState({ height: e.target.value}) }
@@ -48,6 +48,7 @@ class App extends Component {
             <DisplayResult 
               weight={this.state.weight}
               height={this.state.height}
+              method={this.state.method}
             />
 
             </Form>
