@@ -1,28 +1,26 @@
 import React, { Component } from 'react';
-import DisplayResult from './Components/displayResult';
-import { Form, Grid } from 'semantic-ui-react'
+import DisplayResult from './displayResult';
+import { Form } from 'semantic-ui-react'
 
 
-class App extends Component {
+class ImperialCalculator extends Component {
   constructor(props) {
     super(props);
     this.state = {
       weight: '',
-      height: ''
+      height: '',
+      method: 'imperial'
     }
   }
 
   render() {
     return (
-      <Grid centered columns={2}>
-        <Grid.Column>
-          <h1>BMI Calculator</h1>
           <Form>
             <Form.Group widths='equal'>
               <Form.Input
                 fluid
                 label='Weight'
-                placeholder='kg' 
+                placeholder='lbs' 
                 name='weight'
                 value={this.state.weight} 
                 onChange={ (e) => this.setState({ weight: e.target.value}) }
@@ -31,24 +29,22 @@ class App extends Component {
               <Form.Input
                 fluid
                 label='Height'
-                placeholder='cm'
+                placeholder='in'
                 name='height' 
                 value={this.state.height} 
                 onChange={ (e) => this.setState({ height: e.target.value}) }
               />
+              
             </Form.Group>
 
             <DisplayResult 
               weight={this.state.weight}
               height={this.state.height}
+              method={this.state.method}
             />
-
           </Form>
-        </Grid.Column>
-      </Grid>
-      
     );
   }  
 }
 
-export default App;
+export default ImperialCalculator

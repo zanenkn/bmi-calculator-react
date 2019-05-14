@@ -13,7 +13,7 @@ describe('BMI Calculator', () => {
 
   describe('Metric method', () => {
     beforeEach(() => {
-      cy.get('select[id="method"]').select('metric')
+      cy.get('a:first').click()
       cy.get('input[name="weight"]').type('95')
       cy.get('input[name="height"]').type('186')
     })
@@ -25,24 +25,24 @@ describe('BMI Calculator', () => {
     it('displays BMI value', async () => {
       cy.contains('BMI of 27.46')
     })
-  })
+  });
 
-  describe('Imperial method', async () => {
-    beforeEach( async () => {
-      cy.get('select[id="method"]').select('imperial')
+  describe('Imperial method', () => {
+    beforeEach(() => {
+      cy.get('a:last').click()
       cy.get('input[name="weight"]').type('200')
       cy.get('input[name="height"]').type('73')  
     })
-  })
 
-  it('displays assesment', async () => {
-    cy.contains('You are overweight')
+    it('displays assesment', async () => {
+      cy.contains('You are overweight')
+    })
+  
+    it('displays BMI value', async () => {
+      cy.contains('BMI of 26.38')
+    })
   })
-
-  it('displays BMI value', async () => {
-    cy.contains('BMI of 26.38')
-  })
-
+ 
 })
 
 
