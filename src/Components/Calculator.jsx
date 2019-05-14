@@ -14,8 +14,10 @@ class Calculator extends Component {
   }
 
 
-  componentDidUpdate() {
-    this.setState({method: this.props.method})
+  componentDidUpdate(prevProps) {
+    if (prevProps.method !== this.props.method) {
+      this.setState({method: this.props.method})
+    }
   }
 
 
@@ -26,7 +28,7 @@ class Calculator extends Component {
               <Form.Input
                 fluid
                 label='Weight'
-                placeholder='kg' 
+                placeholder={this.state.method === 'metric' ? 'kg' : 'lbs'}
                 name='weight'
                 value={this.state.weight} 
                 onChange={ (e) => this.setState({ weight: e.target.value}) }
@@ -35,7 +37,7 @@ class Calculator extends Component {
               <Form.Input
                 fluid
                 label='Height'
-                placeholder='cm'
+                placeholder={this.state.method === 'metric' ? 'cm' : 'in'}
                 name='height' 
                 value={this.state.height} 
                 onChange={ (e) => this.setState({ height: e.target.value}) }
