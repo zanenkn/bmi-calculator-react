@@ -1,12 +1,21 @@
 import React, { Component } from 'react'
-import MetricCalculator from './Components/metricCalculator'
-import ImperialCalculator from './Components/imperialCalculator'
+import Calculator from './Components/Calculator'
 import { Tab, Grid } from 'semantic-ui-react'
 
 
 const panes = [
-  { menuItem: 'Metric', render: () => <Tab.Pane attached={false}><MetricCalculator/></Tab.Pane> },
-  { menuItem: 'Imperial', render: () => <Tab.Pane attached={false}><ImperialCalculator/></Tab.Pane> },
+  { menuItem: 'Metric', render: () => <Tab.Pane attached={false}>
+    <Calculator
+      method="metric"
+    />
+    </Tab.Pane>
+  },
+  { menuItem: 'Imperial', render: () => <Tab.Pane attached={false}>
+    <Calculator
+      method="imperial"
+    />
+    </Tab.Pane>
+  },
 ]
 
 const App = () => (

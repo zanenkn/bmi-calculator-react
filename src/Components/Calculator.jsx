@@ -3,15 +3,21 @@ import DisplayResult from './displayResult';
 import { Form } from 'semantic-ui-react'
 
 
-class ImperialCalculator extends Component {
+class Calculator extends Component {
   constructor(props) {
     super(props);
     this.state = {
       weight: '',
       height: '',
-      method: 'imperial'
+      method: 'metric'
     }
   }
+
+
+  componentDidUpdate() {
+    this.setState({method: this.props.method})
+  }
+
 
   render() {
     return (
@@ -20,7 +26,7 @@ class ImperialCalculator extends Component {
               <Form.Input
                 fluid
                 label='Weight'
-                placeholder='lbs' 
+                placeholder='kg' 
                 name='weight'
                 value={this.state.weight} 
                 onChange={ (e) => this.setState({ weight: e.target.value}) }
@@ -29,7 +35,7 @@ class ImperialCalculator extends Component {
               <Form.Input
                 fluid
                 label='Height'
-                placeholder='in'
+                placeholder='cm'
                 name='height' 
                 value={this.state.height} 
                 onChange={ (e) => this.setState({ height: e.target.value}) }
@@ -42,9 +48,10 @@ class ImperialCalculator extends Component {
               height={this.state.height}
               method={this.state.method}
             />
+
           </Form>
     );
   }  
 }
 
-export default ImperialCalculator
+export default Calculator
