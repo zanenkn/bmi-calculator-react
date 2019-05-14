@@ -1,23 +1,61 @@
 import React, { Component } from 'react'
-import MetricCalculator from './Components/metricCalculator'
-import ImperialCalculator from './Components/imperialCalculator'
-import { Tab, Grid } from 'semantic-ui-react'
+import DisplayResult from './Components/displayResult';
+import { Grid, Form } from 'semantic-ui-react'
 
 
-const panes = [
-  { menuItem: 'Metric', render: () => <Tab.Pane attached={false}><MetricCalculator/></Tab.Pane> },
-  { menuItem: 'Imperial', render: () => <Tab.Pane attached={false}><ImperialCalculator/></Tab.Pane> },
-]
 
-const App = () => (
-  <Grid centered columns={2}>
-    <Grid.Column>
 
-      <h1>BMI Calculator</h1>
-      <Tab menu={{ secondary: true, pointing: true }} panes={panes} />
+class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      weight: "",
+      height: "",
+      method: "metric"
+    };
+  }
 
-    </Grid.Column>
-  </Grid>
-)
+  render() {
+    return (
+      <Grid centered columns={2}>
+        <Grid.Column>
+
+          <h1>BMI Calculator</h1>
+          <button onClick={() => this.setState({ method: "metric" })}>metric</button>
+          <button onClick={() => this.setState({ method: "imperial" })}>imperial</button>
+
+          <Form>
+            <Form.Group widths='equal'>
+              <Form.Input
+                fluid
+                label='Weight'
+                placeholder='kg' 
+                name='weight'
+                value={this.state.weight} 
+                onChange={ (e) => this.setState({ weight: e.target.value}) }
+              />
+
+              <Form.Input
+                fluid
+                label='Height'
+                placeholder='cm'
+                name='height' 
+                value={this.state.height} 
+                onChange={ (e) => this.setState({ height: e.target.value}) }
+              />
+            </Form.Group>
+
+            <DisplayResult 
+              weight={this.state.weight}
+              height={this.state.height}
+            />
+
+            </Form>
+
+        </Grid.Column>
+      </Grid>
+    )
+  }
+}
 
 export default App
